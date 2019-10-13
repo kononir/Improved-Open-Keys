@@ -1,0 +1,76 @@
+#pragma once
+#include "BigExponentation.h"
+#include <cassert>
+#include <iostream>
+
+#define TEST_PASSED 0
+#define TEST_NOT_PASSED 1
+
+int runTests();
+
+int test_sum_should_return_4_when_given_2_2();
+int test_sum_should_return_16_when_given_2_14();
+int test_sum_should_return_22_when_given_5_17();
+
+int test_sub_should_return_2_when_given_4_2();
+int test_sub_should_return_0_when_given_8_8();
+int test_sub_should_return_8_when_given_16_8();
+
+int test_mult_should_return_4_when_given_2_2();
+int test_mult_should_return_32_when_given_2_16();
+int test_mult_should_return_144_when_given_12_12();
+
+int test_div_should_return_2_0_when_given_4_2();
+int test_div_should_return_2_0_when_given_16_8();
+int test_div_should_return_101_0_when_given_202_2();
+int test_div_should_return_16_10_when_given_289_18();
+
+int test_big_exponentation_should_return_0_when_given_12_6_36();
+int test_big_exponentation_should_return_17_when_given_17_5_18();
+int test_big_exponentation_should_return_6_when_given_11_11_13();
+
+__declspec(selectany) int(*tests[])(void) = {
+	test_sum_should_return_4_when_given_2_2,
+	test_sum_should_return_16_when_given_2_14,
+	test_sum_should_return_22_when_given_5_17,
+
+	test_sub_should_return_2_when_given_4_2,
+	test_sub_should_return_0_when_given_8_8,
+	test_sub_should_return_8_when_given_16_8,
+
+	test_mult_should_return_4_when_given_2_2,
+	test_mult_should_return_32_when_given_2_16,
+	test_mult_should_return_144_when_given_12_12,
+
+	test_div_should_return_2_0_when_given_4_2,
+	test_div_should_return_2_0_when_given_16_8,
+	test_div_should_return_101_0_when_given_202_2,
+	test_div_should_return_16_10_when_given_289_18,
+
+	test_big_exponentation_should_return_0_when_given_12_6_36,
+	test_big_exponentation_should_return_17_when_given_17_5_18,
+	test_big_exponentation_should_return_6_when_given_11_11_13
+};
+
+__declspec(selectany) string names[] = {
+	"test_sum_should_return_4_when_given_2_2",
+	"test_sum_should_return_16_when_given_2_14",
+	"test_sum_should_return_22_when_given_5_17",
+
+	"test_sub_should_return_2_when_given_4_2",
+	"test_sub_should_return_0_when_given_8_8",
+	"test_sub_should_return_8_when_given_16_8",
+
+	"test_mult_should_return_4_when_given_2_2",
+	"test_mult_should_return_32_when_given_2_16",
+	"test_mult_should_return_144_when_given_12_12",
+
+	"test_div_should_return_2_when_given_4_2",
+	"test_div_should_return_2_when_given_16_8",
+	"test_div_should_return_101_when_given_202_2",
+	"test_div_should_return_16_when_given_289_18",
+
+	"test_big_exponentation_should_return_0_when_given_12_6_36",
+	"test_big_exponentation_should_return_17_when_given_17_5_18",
+	"test_big_exponentation_should_return_6_when_given_11_11_13"
+};
