@@ -14,22 +14,38 @@ int main()
 {
 	runTests();
 
+	string p;
+	cout << "Input p: ";
+	getline(cin, p);
+	cout << "Length p = " << p.size() << endl;
 	string a;
 	cout << "Input a: ";
 	getline(cin, a);
 	cout << "Length a = " << a.size() << endl;
-	string x;
-	cout << "Input x: ";
-	getline(cin, x);;
-	cout << "Length x = " << x.size() << endl;
-	string p;
-	cout << "Input p: ";
-	getline(cin, p);
-	cout << "Length p = " << p.size() << endl << endl;
+	string xA;
+	cout << "Input Allice x: ";
+	getline(cin, xA);;
+	cout << "Allice x length = " << xA.size() << endl;
+	string xB;
+	cout << "Input Bob x: ";
+	getline(cin, xB);;
+	cout << "Bob x length = " << xB.size() << endl << endl;
 
-	string res = exponentiationBig(a, x, p);
-	cout << "Exponentiation result: " << res << endl;
-	cout << "Length result = " << res.size() << endl << endl;;
+	string yA = exponentiationBig(a, xA, p);
+	cout << "Found opened key of Allice: " << yA << endl;
+	cout << "Allice opened key length = " << yA.size() << endl;
+
+	string yB = exponentiationBig(a, xB, p);
+	cout << "Found opened key of Bob: " << yB << endl;
+	cout << "Bob opened key length = " << yB.size() << endl << endl;
+
+	string zA = exponentiationBig(yB, xA, p);
+	cout << "Found secret key of Allice/Bob: " << zA << endl;
+	cout << "Allice/Bob secret key length = " << zA.size() << endl;
+
+	string zB = exponentiationBig(yA, xB, p);
+	cout << "Found secret key of Bob/Allice: " << zB << endl;
+	cout << "Bob/Allice secret key length = " << zB.size() << endl << endl;
 
 	system("pause");
 }

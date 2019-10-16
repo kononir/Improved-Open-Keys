@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
@@ -24,4 +25,4 @@ string simpleThreeSub(char a, char b, char c);
 string simpleTwoSub(char a, char b);
 string simpleSub(string a, string b);
 bool moreThan(string a, string b);
-bool moreThanOrEqual(string a, string b);
+bool moreOrEqual(string a, string b);

@@ -1,6 +1,40 @@
 #include "pch.h"
 #include "BigExponentation.h"
+/*
+string exponentiationBig(string a, string x, string p) {
+	// calculate all degree values (to max degree)
+	vector<string> beginMasOfDegrees;
+	vector<string> finalMasOfDegrees;
+	beginMasOfDegrees.push_back("1"); // zero degree
+	beginMasOfDegrees.push_back(a); // first degree
+	string higherDegree;
+	for (higherDegree = "2"; moreOrEqual(x, higherDegree); higherDegree = mult(higherDegree, "2")) {
+		beginMasOfDegrees.push_back(div(mult(beginMasOfDegrees.back(), beginMasOfDegrees.back()), p).residue);
+	}
 
+	// choose necessary degree
+	string currentX = x;
+	if (isOdd(x)) { // if start degree is odd,
+		finalMasOfDegrees.push_back(a); // than push in finalMasOfDegrees a
+		fastDecr(x);
+	}
+	string currentDegree = higherDegree;
+	for (unsigned long long iter = beginMasOfDegrees.size(); iter > 1 && currentDegree != "0"; iter--, currentDegree = div(currentDegree, "2").quotient) {
+		if (moreOrEqual(currentX, currentDegree)) { // if x moreOrEqual current degree of 2,
+			finalMasOfDegrees.push_back(beginMasOfDegrees[iter]); // than push in finalMasOfDegrees this degree from beginMasOfDegrees
+			currentX = sub(currentX, currentDegree); // and subtract this degree from current x
+		}
+	}
+
+	// multiply received degrees
+	string finalNumber = "1";
+	for (unsigned long long iter = 0; iter < finalMasOfDegrees.size(); iter++) {
+		finalNumber = div(mult(finalNumber, finalMasOfDegrees[iter]), p).residue;
+	}
+
+	return finalNumber;
+}
+*/
 string exponentiationBig(string a, string x, string p) {
 	string buf = "1";
 	string curr_a = a;
@@ -129,10 +163,10 @@ string simpleTwoSum(char a, char b) {
 DivResult div(string a, string b) {
 	string residue = a;
 	string quotient;
-	while (moreThanOrEqual(residue, b)) {
+	while (moreOrEqual(residue, b)) {
 		// search for length of current divident (>= divider)
 		unsigned int curr_divident_len = 1;
-		while (!moreThanOrEqual(residue.substr(0, curr_divident_len), b) && curr_divident_len < residue.size()) {
+		while (!moreOrEqual(residue.substr(0, curr_divident_len), b) && curr_divident_len < residue.size()) {
 			curr_divident_len++;
 		}
 
@@ -180,24 +214,22 @@ string simpleDiv(string a, string b) {
 	int num = 0;
 	string curr_a = a;
 
-	while (moreThanOrEqual(curr_a, b)) {
+	while (moreOrEqual(curr_a, b)) {
 		curr_a = sub(curr_a, b);
 		num++;
 	}
 
 	return to_string(num);
-	//return to_string(stoi(a) / stoi(b));
 }
 
 string simpleMod(string a, string b) {
 	string curr_a = a;
 
-	while (moreThanOrEqual(curr_a, b)) {
+	while (moreOrEqual(curr_a, b)) {
 		curr_a = sub(curr_a, b);
 	}
 
 	return curr_a;
-	//return to_string(stoi(a) % stoi(b));
 }
 
 bool isOdd(string x) {
@@ -309,7 +341,7 @@ bool moreThan(string a, string b) {
 	return false;
 }
 
-bool moreThanOrEqual(string a, string b) {
+bool moreOrEqual(string a, string b) {
 	if (a == b) {
 		return true;
 	}
