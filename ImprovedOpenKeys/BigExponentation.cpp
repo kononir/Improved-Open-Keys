@@ -62,6 +62,43 @@ string exponentiationBig(string a, string x, string p) {
 	return div(mult(buf, curr_a), p).residue;
 }
 
+string discretLogarithm(string a, string b, string p)
+{
+	string H = sum(squareRoot(p), "1");
+	string c = exponentiationBig(a, H, p);
+
+	unordered_map<string, string> u_table;
+	for (string u = "1"; moreOrEqual(H, u); u = sum(u, "1")) {
+		string key = exponentiationBig(c, u, p);
+		u_table.insert(pair<string, string>(key, u));
+	}
+	unordered_map<string, string> v_table;
+	for (string v = "0"; moreOrEqual(H, v); v = sum(v, "1")) {
+		string key = div(mult(div(b, p).residue, exponentiationBig(a, v, p)), p).residue;
+		v_table.insert(pair<string, string>(key, v));
+	}
+
+	string u;
+	string v;
+	auto u_table_iter = u_table.begin();
+	while (true) {
+		auto v_table_iter = v_table.find(u_table_iter->first);
+		if (v_table_iter != v_table.end()) {
+			u = u_table_iter->second;
+			v = v_table_iter->second;
+			break;
+		}
+		u_table_iter++;
+	}
+
+	return div(sub(mult(H, u), v), sub(p, "1")).residue;
+}
+
+string squareRoot(string x)
+{
+	return string();
+}
+
 string mult(string x1, string x2) {
 	string a;
 	string b;

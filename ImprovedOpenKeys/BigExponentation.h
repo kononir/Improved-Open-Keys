@@ -2,6 +2,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -10,6 +11,9 @@ struct DivResult {
 };
 
 string exponentiationBig(string a, string x, string p);
+string discretLogarithm(string a, string b, string p);
+
+string squareRoot(string x);
 string mult(string x1, string x2);
 string simpleMult(char a, char b);
 string sum(string x1, string x2);
