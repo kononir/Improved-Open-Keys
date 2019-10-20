@@ -24,10 +24,19 @@ int test_div_should_return_2_0_when_given_4_2();
 int test_div_should_return_2_0_when_given_16_8();
 int test_div_should_return_101_0_when_given_202_2();
 int test_div_should_return_16_10_when_given_289_18();
+int test_div_should_return_0_0_when_given_0_2();
 
-int test_big_exponentation_should_return_0_when_given_12_6_36();
-int test_big_exponentation_should_return_17_when_given_17_5_18();
-int test_big_exponentation_should_return_6_when_given_11_11_13();
+int test_exponentiationBig_should_return_0_when_given_12_6_36();
+int test_exponentiationBig_should_return_17_when_given_17_5_18();
+int test_exponentiationBig_should_return_6_when_given_11_11_13();
+int test_exponentiationBig_should_return_1_when_given_5_0_7();
+
+int test_sqrtBig_should_return_2_when_given_4();
+int test_sqrtBig_should_return_6_when_given_36();
+int test_sqrtBig_should_return_12_when_given_144();
+int test_sqrtBig_should_return_60_when_given_3600();
+
+int test_discretLogarithm_should_return_2_when_given_5_4_7();
 
 __declspec(selectany) int(*tests[])(void) = {
 	test_sum_should_return_4_when_given_2_2,
@@ -46,10 +55,19 @@ __declspec(selectany) int(*tests[])(void) = {
 	test_div_should_return_2_0_when_given_16_8,
 	test_div_should_return_101_0_when_given_202_2,
 	test_div_should_return_16_10_when_given_289_18,
+	test_div_should_return_0_0_when_given_0_2,
 
-	test_big_exponentation_should_return_0_when_given_12_6_36,
-	test_big_exponentation_should_return_17_when_given_17_5_18,
-	test_big_exponentation_should_return_6_when_given_11_11_13
+	test_exponentiationBig_should_return_0_when_given_12_6_36,
+	test_exponentiationBig_should_return_17_when_given_17_5_18,
+	test_exponentiationBig_should_return_6_when_given_11_11_13,
+	test_exponentiationBig_should_return_1_when_given_5_0_7,
+
+	test_sqrtBig_should_return_2_when_given_4,
+	test_sqrtBig_should_return_6_when_given_36,
+	test_sqrtBig_should_return_12_when_given_144,
+	test_sqrtBig_should_return_60_when_given_3600,
+
+	test_discretLogarithm_should_return_2_when_given_5_4_7
 };
 
 __declspec(selectany) string names[] = {
@@ -69,8 +87,17 @@ __declspec(selectany) string names[] = {
 	"test_div_should_return_2_when_given_16_8",
 	"test_div_should_return_101_when_given_202_2",
 	"test_div_should_return_16_when_given_289_18",
+	"test_div_should_return_0_0_when_given_0_2",
 
-	"test_big_exponentation_should_return_0_when_given_12_6_36",
-	"test_big_exponentation_should_return_17_when_given_17_5_18",
-	"test_big_exponentation_should_return_6_when_given_11_11_13"
+	"test_exponentiationBig_should_return_0_when_given_12_6_36",
+	"test_exponentiationBig_should_return_17_when_given_17_5_18",
+	"test_exponentiationBig_should_return_6_when_given_11_11_13",
+	"test_exponentiationBig_should_return_1_when_given_5_0_7",
+
+	"test_sqrtBig_should_return_2_when_given_4",
+	"test_sqrtBig_should_return_6_when_given_36",
+	"test_sqrtBig_should_return_12_when_given_144",
+	"test_sqrtBig_should_return_60_when_given_3600",
+
+	"test_discretLogarithm_should_return_2_when_given_5_4_7"
 };

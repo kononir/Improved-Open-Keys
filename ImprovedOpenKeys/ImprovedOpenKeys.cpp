@@ -4,7 +4,7 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
-#include <cmath>
+#include <conio.h>
 #include "BigExponentation.h"
 #include "BigExponentationTests.h"
 
@@ -46,6 +46,15 @@ int main()
 	string zB = exponentiationBig(yA, xB, p);
 	cout << "Found secret key of Bob/Allice: " << zB << endl;
 	cout << "Bob/Allice secret key length = " << zB.size() << endl << endl;
+
+	cout << "Do you want to hack? (y/n) ";
+	if (_getch() == 'y') {
+		cout << endl;
+
+		string hacked_key = discretLogarithm(a, yB, p);
+		cout << "Hacked key: " << hacked_key << endl;
+		cout << "Hacked key length = " << hacked_key.size() << endl << endl;
+	}
 
 	system("pause");
 }

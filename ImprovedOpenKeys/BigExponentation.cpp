@@ -1,43 +1,15 @@
 #include "pch.h"
 #include "BigExponentation.h"
-/*
-string exponentiationBig(string a, string x, string p) {
-	// calculate all degree values (to max degree)
-	vector<string> beginMasOfDegrees;
-	vector<string> finalMasOfDegrees;
-	beginMasOfDegrees.push_back("1"); // zero degree
-	beginMasOfDegrees.push_back(a); // first degree
-	string higherDegree;
-	for (higherDegree = "2"; moreOrEqual(x, higherDegree); higherDegree = mult(higherDegree, "2")) {
-		beginMasOfDegrees.push_back(div(mult(beginMasOfDegrees.back(), beginMasOfDegrees.back()), p).residue);
-	}
 
-	// choose necessary degree
-	string currentX = x;
-	if (isOdd(x)) { // if start degree is odd,
-		finalMasOfDegrees.push_back(a); // than push in finalMasOfDegrees a
-		fastDecr(x);
-	}
-	string currentDegree = higherDegree;
-	for (unsigned long long iter = beginMasOfDegrees.size(); iter > 1 && currentDegree != "0"; iter--, currentDegree = div(currentDegree, "2").quotient) {
-		if (moreOrEqual(currentX, currentDegree)) { // if x moreOrEqual current degree of 2,
-			finalMasOfDegrees.push_back(beginMasOfDegrees[iter]); // than push in finalMasOfDegrees this degree from beginMasOfDegrees
-			currentX = sub(currentX, currentDegree); // and subtract this degree from current x
-		}
-	}
-
-	// multiply received degrees
-	string finalNumber = "1";
-	for (unsigned long long iter = 0; iter < finalMasOfDegrees.size(); iter++) {
-		finalNumber = div(mult(finalNumber, finalMasOfDegrees[iter]), p).residue;
-	}
-
-	return finalNumber;
-}
-*/
 string exponentiationBig(string a, string x, string p) {
 	string buf = "1";
-	string curr_a = a;
+	string curr_a;
+	if (x == "0") {
+		curr_a = "1";
+	}
+	else {
+		curr_a = a;
+	}
 
 	while (moreThan(x, "1")) {
 		curr_a = div(curr_a, p).residue;
@@ -64,7 +36,7 @@ string exponentiationBig(string a, string x, string p) {
 
 string discretLogarithm(string a, string b, string p)
 {
-	string H = sum(squareRoot(p), "1");
+	string H = sum(sqrtBig(p), "1");
 	string c = exponentiationBig(a, H, p);
 
 	unordered_map<string, string> u_table;
@@ -94,9 +66,62 @@ string discretLogarithm(string a, string b, string p)
 	return div(sub(mult(H, u), v), sub(p, "1")).residue;
 }
 
-string squareRoot(string x)
+string sqrtBig(string x)
 {
-	return string();
+	int two_dig_size = x.size() / 2 + x.size() % 2;
+
+	string* two_dig = new string[two_dig_size];
+	auto x_iter = x.rbegin();
+	auto end = x.rend();
+	int two_dig_num = 0;
+	while (x_iter != end) {
+		char second = *x_iter;
+		x_iter++;
+		if (x_iter != end) {
+			two_dig[two_dig_num] = string(1, *x_iter) + string(1, second);
+
+			two_dig_num++;
+			x_iter++;
+		}
+		else {
+			two_dig[two_dig_num] = string(1, second);
+		}
+	}
+
+	two_dig_num = two_dig_size - 1;
+	string first_two_dig = two_dig[two_dig_num];
+	string result = to_string((int)sqrt(stoi(first_two_dig)));
+	
+	string residue = sub(first_two_dig, mult(result, result));
+	if (first_two_dig != "0" && residue == "0") {
+		residue = "";
+	}
+
+	two_dig_num--;
+	if (two_dig_num >= 0) {
+		residue += two_dig[two_dig_num];
+	}
+
+	while (two_dig_num >= 0) {
+		string buff = mult(result, "2");
+		string residue_without_last = residue.substr(0, residue.size() - 1);
+		string div_res = div(residue_without_last, buff).quotient;
+
+		two_dig_num--;
+		if (two_dig_num >= 0) {
+			if (div_res != "0") {
+				buff += div_res;
+				residue = sub(residue, mult(buff, div_res));
+			}
+			else {
+				residue += two_dig[two_dig_num];
+			}
+		}
+		
+		result += div_res;
+	}
+
+	return result;
 }
 
 string mult(string x1, string x2) {
@@ -244,6 +269,11 @@ DivResult div(string a, string b) {
 			}
 		}
 	}
+
+	if (quotient.empty()) {
+		quotient = "0";
+	}
+
 	return DivResult{ quotient, residue };
 }
 

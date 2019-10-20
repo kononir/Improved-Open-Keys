@@ -95,19 +95,61 @@ int test_div_should_return_16_10_when_given_289_18()
 	return TEST_PASSED;
 }
 
-int test_big_exponentation_should_return_0_when_given_12_6_36() {
+int test_div_should_return_0_0_when_given_0_2()
+{
+	assert("0" == div("0", "2").quotient);
+	return TEST_PASSED;
+}
+
+int test_exponentiationBig_should_return_0_when_given_12_6_36() {
 	assert("0" == exponentiationBig("12", "6", "36"));
 	return TEST_PASSED;
 }
 
-int test_big_exponentation_should_return_17_when_given_17_5_18()
+int test_exponentiationBig_should_return_17_when_given_17_5_18()
 {
 	assert("17" == exponentiationBig("17", "5", "18"));
 	return TEST_PASSED;
 }
 
-int test_big_exponentation_should_return_6_when_given_11_11_13()
+int test_exponentiationBig_should_return_6_when_given_11_11_13()
 {
 	assert("6" == exponentiationBig("11", "11", "13"));
+	return TEST_PASSED;
+}
+
+int test_exponentiationBig_should_return_1_when_given_5_0_7()
+{
+	assert("1" == exponentiationBig("5", "0", "7"));
+	return TEST_PASSED;
+}
+
+int test_sqrtBig_should_return_2_when_given_4()
+{
+	assert("2" == sqrtBig("4"));
+	return TEST_PASSED;
+}
+
+int test_sqrtBig_should_return_6_when_given_36()
+{
+	assert("6" == sqrtBig("36"));
+	return TEST_PASSED;
+}
+
+int test_sqrtBig_should_return_12_when_given_144()
+{
+	assert("12" == sqrtBig("144"));
+	return TEST_PASSED;
+}
+
+int test_sqrtBig_should_return_60_when_given_3600()
+{
+	assert("60" == sqrtBig("3600"));
+	return TEST_PASSED;
+}
+
+int test_discretLogarithm_should_return_2_when_given_5_4_7()
+{
+	assert("2" == discretLogarithm("5", "4", "7"));
 	return TEST_PASSED;
 }
