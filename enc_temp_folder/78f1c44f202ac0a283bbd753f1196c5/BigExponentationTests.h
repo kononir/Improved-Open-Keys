@@ -17,7 +17,7 @@ int test_sub_should_return_0_when_given_8_8();
 int test_sub_should_return_8_when_given_16_8();
 int test_sub_should_return_100_when_given_101_1();
 int test_sub_should_return_999_when_given_1000_1();
-int test_sub_should_return_109_when_given_301_192();
+int test_sub_should_return_1052851270917481491046580764152685_when_given_1318104130729672549682889244152684_265252859812191058636308479999999();
 
 int test_mult_should_return_4_when_given_2_2();
 int test_mult_should_return_32_when_given_2_16();
@@ -51,7 +51,7 @@ __declspec(selectany) int(*tests[])(void) = {
 	test_sub_should_return_8_when_given_16_8,
 	test_sub_should_return_100_when_given_101_1,
 	test_sub_should_return_999_when_given_1000_1,
-	test_sub_should_return_109_when_given_301_192,
+	test_sub_should_return_1052851270917481491046580764152685_when_given_1318104130729672549682889244152684_265252859812191058636308479999999,
 
 	test_mult_should_return_4_when_given_2_2,
 	test_mult_should_return_32_when_given_2_16,
@@ -86,7 +86,7 @@ __declspec(selectany) string names[] = {
 	"test_sub_should_return_8_when_given_16_8",
 	"test_sub_should_return_100_when_given_101_1",
 	"test_sub_should_return_999_when_given_1000_1",
-	"test_sub_should_return_109_when_given_301_192",
+	"test_sub_should_return_1052851270917481491046580764152685_when_given_1318104130729672549682889244152684_265252859812191058636308479999999",
 
 	"test_mult_should_return_4_when_given_2_2",
 	"test_mult_should_return_32_when_given_2_16",
