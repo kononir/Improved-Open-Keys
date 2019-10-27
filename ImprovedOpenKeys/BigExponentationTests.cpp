@@ -55,6 +55,30 @@ int test_sub_should_return_8_when_given_16_8()
 	return TEST_PASSED;
 }
 
+int test_sub_should_return_100_when_given_101_1()
+{
+	assert("100" == sub("101", "1"));
+	return TEST_PASSED;
+}
+
+int test_sub_should_return_999_when_given_1000_1()
+{
+	assert("999" == sub("1000", "1"));
+	return TEST_PASSED;
+}
+
+int test_sub_should_return_1052851270917481491046580764152685_when_given_1318104130729672549682889244152684_265252859812191058636308479999999()
+{
+	assert("1052851270917481491046580764152685" == sub("1318104130729672549682889244152684", "265252859812191058636308479999999"));
+	return TEST_PASSED;
+}
+
+int test_sub_should_return_0_when_given_111_111()
+{
+	assert("0" == sub("111", "111"));
+	return TEST_PASSED;
+}
+
 int test_mult_should_return_4_when_given_2_2() {
 	assert("4" == mult("2", "2"));
 	return TEST_PASSED;

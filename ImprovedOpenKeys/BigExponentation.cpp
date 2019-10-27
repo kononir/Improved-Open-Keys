@@ -312,10 +312,11 @@ string fastDecr(string a) {
 		return first_part + simpleSub(two_last_dig, "1");
 	}
 	else {
-		return simpleSub(a, "1");;
+		return simpleSub(a, "1");
 	}
 }
 
+// doesn't work with x1 < x2
 string sub(string x1, string x2) {
 	string a = x1;
 	string b = x2;
@@ -331,9 +332,14 @@ string sub(string x1, string x2) {
 			general_buf = '1';
 			res = to_string(10 + stoi(curr_sub)) + res;
 		}
-		else {
+		else if (curr_sub.size() == 1) {
 			general_buf = '0';
 			res = curr_sub[0] + res;
+		}
+		// when a[i] = 0, b[i] = 9, general_buf = 1 => 0 - 9 - 1 = -10
+		else if (curr_sub.size() == 3) {
+			general_buf = '1';
+			res = '0' + res;
 		}
 	}
 
@@ -358,7 +364,16 @@ string sub(string x1, string x2) {
 		return res;
 	}
 	else {
-		return res.substr(1, res.size() - 1);
+		int zero_num = 1;
+		int i = 1;
+		while (i < res.size()) {
+			if (res[i] != '0') {
+				return res.substr(zero_num, res.size() - zero_num);
+			}
+			zero_num++;
+			i++;
+		}
+		return "0";
 	}
 }
 
